@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'style_payment.css' %}">
+
+</head>
+<body>
+
+<div class="container">
+
+    <form action="" method="POST" >
+        {% csrf_token %}
+        <div class="row">
+
+            <div class="col">
+
+                <h3 class="title">billing address</h3>
+
+                <div class="inputBox">
+                    <span>full name :</span>
+                    <input type="text" name="name" placeholder="john deo">
+                </div>
+                <div class="inputBox">
+                    <span>email :</span>
+                    <input type="email" name="mail" placeholder="example@example.com">
+                </div>
+                <div class="inputBox">
+                    <span>phone :</span>
+                    <input type="number" name="phone" placeholder="phone number">
+                </div>
+                <div class="inputBox">
+                    <span>city :</span>
+                    <input type="text" placeholder="mumbai">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>Time :</span>
+                        <select id="language" name="time" onChange="update()" style="padding:12px 30px;">
+                            <option value="0.00166">6 s</option>
+                            <option value="1">1 hour</option>
+                            <option value="2">2 hour</option>
+                            <option value="3">3 hour</option>
+                        </select>
+                    </div>
+                    <div class="inputBox">
+                        <span>Amount :</span>
+                        <input type="text" id="value"  disabled >
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col">
+
+                <h3 class="title">payment</h3>
+
+                <div class="inputBox">
+                    <span>cards accepted :</span>
+                    <img src="{% static 'card_img.png' %}" alt="">
+                </div>
+                <div class="inputBox">
+                    <span>name on card :</span>
+                    <input type="text" placeholder="mr. john deo">
+                </div>
+                <div class="inputBox">
+                    <span>credit card number :</span>
+                    <input type="number" placeholder="1111-2222-3333-4444">
+                </div>
+                <div class="inputBox">
+                    <span>exp month :</span>
+                    <input type="text" placeholder="january">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>exp year :</span>
+                        <input type="number" placeholder="2022">
+                    </div>
+                    <div class="inputBox">
+                        <span>CVV :</span>
+                        <input type="text" placeholder="1234">
+                    </div>
+                </div>
+
+            </div>
+    
+        </div>
+
+        <input type="submit" value="proceed to checkout" class="submit-btn">
+
+    </form>
+
+</div>    
+<script type="text/javascript">
+    function update() {
+        var select = document.getElementById('language');
+        var option = select.options[select.selectedIndex];
+
+        document.getElementById('value').value = option.value*2;
+        
+    }
+
+    update();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Parking</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+  </head>
+  <body>
+    <div class='menu'>
+    {% for room in rooms %}
+   <h1> {{room.name}}</h1><br>
+   <div class='menu_text'>
+  <h2> Places: {{room.places}}<br>
+    {% if room.free_places == 0 %}
+  Number of Free Places: <p color="red">{{room.free_places}}</p>
+    {% else %}
+    Number of Free Places: {{room.free_places}}
+{% endif %}
+</h2>
+
+   <h2>
+<hr>
+<p align="left" style="margin-left:20px;font-size:30px;color:black">Row A</p><br>
+    Free Places: {{room.order_a}}
+
+  </h2> 
+  <hr>
+  <h2>
+    <p align="left" style="margin-left:20px;font-size:30px;color:black">Row B</p><br>
+    Free Places: {{room.order_b}}
+  </h2>
+</div>
+</div>
+{% endfor %}
+    
+  </body>
